@@ -207,7 +207,6 @@ export const skillCategories: SkillCategory[] = [
     id: 'development',
     name: 'Development',
     skills: [
-      { name: 'Flask', description: 'Lightweight APIs and dashboards for models and data.' },
       { name: 'HTML', description: 'Semantic structure for data-facing web interfaces.' },
       { name: 'CSS', description: 'Layout and visual systems for clear presentation.' },
       { name: 'JavaScript', description: 'Interactive charts and front-end behaviour.' },

@@ -20,7 +20,7 @@ export function CharReveal({
   text,
   className,
   delay = 0,
-  stagger = 0.025,
+  stagger = 0.015,
   as: Tag = 'span',
   active = true,
   highlight,
@@ -35,16 +35,19 @@ export function CharReveal({
         <span key={li} className="block overflow-hidden pb-[0.08em] -mb-[0.08em]">
           {line.split('').map((char, ci) => {
             const i = index++
-            const isHighlighted = highlight && line.includes(highlight) &&
-              ci >= line.indexOf(highlight) && ci < line.indexOf(highlight) + highlight.length
+            const isHighlighted =
+              highlight &&
+              line.includes(highlight) &&
+              ci >= line.indexOf(highlight) &&
+              ci < line.indexOf(highlight) + highlight.length
             return (
               <motion.span
                 key={`${li}-${ci}`}
                 aria-hidden
                 className={cn('inline-block will-change-transform', isHighlighted && 'text-orange')}
-                initial={reduced ? false : { y: '110%', rotate: 4, opacity: 0 }}
+                initial={reduced ? false : { y: '110%', rotate: 3, opacity: 0 }}
                 animate={active ? { y: 0, rotate: 0, opacity: 1 } : undefined}
-                transition={{ duration: 0.9, ease, delay: delay + i * stagger }}
+                transition={{ duration: 0.55, ease, delay: delay + i * stagger }}
               >
                 {char === ' ' ? '\u00A0' : char}
               </motion.span>
@@ -66,23 +69,30 @@ type WordRevealProps = {
 }
 
 /** Scroll-triggered word reveal, masked from below. */
-export function WordReveal({ text, className, delay = 0, once = true, as: Tag = 'p', highlight = [] }: WordRevealProps) {
+export function WordReveal({
+  text,
+  className,
+  delay = 0,
+  once = true,
+  as: Tag = 'p',
+  highlight = [],
+}: WordRevealProps) {
   const reduced = useReducedMotion()
   const lines = text.split('\n')
   const container: Variants = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.04, delayChildren: delay } },
+    show: { transition: { staggerChildren: 0.025, delayChildren: delay } },
   }
   const word: Variants = {
     hidden: reduced ? {} : { y: '110%', opacity: 0 },
-    show: { y: 0, opacity: 1, transition: { duration: 0.8, ease } },
+    show: { y: 0, opacity: 1, transition: { duration: 0.5, ease } },
   }
   return (
     <motion.div
       variants={container}
       initial="hidden"
       whileInView="show"
-      viewport={{ once, margin: '-10% 0px' }}
+      viewport={{ once, margin: '-8% 0px' }}
     >
       <Tag className={cn('block', className)}>
         {lines.map((line, li) => (
@@ -113,15 +123,38 @@ type FadeUpProps = {
   once?: boolean
 }
 
-export function FadeUp({ children, className, delay = 0, y = 32, once = true }: FadeUpProps) {
+export function FadeUp({ children, className, delay = 0, y = 24, once = true }: FadeUpProps) {
   const reduced = useReducedMotion()
   return (
     <motion.div
       className={className}
       initial={reduced ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: '-10% 0px' }}
-      transition={{ duration: 0.9, ease, delay }}
+      viewport={{ once, margin: '-8% 0px' }}
+      transition={{ duration: 0.55, ease, delay }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+export function ScaleIn({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode
+  className?: string
+  delay?: number
+}) {
+  const reduced = useReducedMotion()
+  return (
+    <motion.div
+      className={className}
+      initial={reduced ? false : { opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: '-8% 0px' }}
+      transition={{ duration: 0.5, ease, delay }}
     >
       {children}
     </motion.div>

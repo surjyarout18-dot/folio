@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { MeshDistortMaterial } from '@react-three/drei'
 import * as THREE from 'three'
@@ -140,7 +140,7 @@ function Intelligence({ reduced }: { reduced: boolean }) {
         <spriteMaterial map={glow} transparent depthWrite={false} blending={THREE.AdditiveBlending} />
       </sprite>
       <mesh>
-        <sphereGeometry args={[1.05, 96, 96]} />
+        <sphereGeometry args={[1.05, 54, 54]} />
         <MeshDistortMaterial
           color="#1a0c06"
           emissive={ORANGE}
@@ -156,30 +156,48 @@ function Intelligence({ reduced }: { reduced: boolean }) {
         <meshBasicMaterial color="#F5F3EF" wireframe transparent opacity={0.08} />
       </mesh>
       <mesh rotation={[Math.PI / 2.4, 0, 0.4]}>
-        <torusGeometry args={[2.1, 0.004, 8, 160]} />
+        <torusGeometry args={[2.1, 0.004, 8, 120]} />
         <meshBasicMaterial color={ORANGE} transparent opacity={0.5} />
       </mesh>
-      <OrangeDust count={220} reduced={reduced} />
+      <OrangeDust count={200} reduced={reduced} />
     </group>
   )
 }
 
 export default function HeroScene({ reduced }: { reduced: boolean }) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(true)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting)
+      },
+      { threshold: 0.05 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <Canvas
-      dpr={[1, 1.5]}
-      camera={{ position: [0, 0, 9], fov: 42 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-      frameloop={reduced ? 'demand' : 'always'}
-      className="!absolute inset-0"
-      aria-hidden
-    >
-      <ambientLight intensity={0.35} />
-      <pointLight position={[4, 3, 5]} intensity={28} color="#ffd4c2" />
-      <pointLight position={[-5, -2, 3]} intensity={10} color={ORANGE} />
-      <Particles count={2600} reduced={reduced} />
-      <Intelligence reduced={reduced} />
-      <fog attach="fog" args={['#08090B', 8, 20]} />
-    </Canvas>
+    <div ref={containerRef} className="absolute inset-0">
+      <Canvas
+        dpr={[1, 1.5]}
+        camera={{ position: [0, 0, 9], fov: 42 }}
+        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+        frameloop={reduced || !inView ? 'demand' : 'always'}
+        className="!absolute inset-0"
+        aria-hidden
+      >
+        <ambientLight intensity={0.35} />
+        <pointLight position={[4, 3, 5]} intensity={28} color="#ffd4c2" />
+        <pointLight position={[-5, -2, 3]} intensity={10} color={ORANGE} />
+        <Particles count={2200} reduced={reduced} />
+        <Intelligence reduced={reduced} />
+        <fog attach="fog" args={['#08090B', 8, 20]} />
+      </Canvas>
+    </div>
   )
 }

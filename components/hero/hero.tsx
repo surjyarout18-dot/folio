@@ -3,7 +3,7 @@
 import { useCallback, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Sparkles, Database, BarChart3, Binary } from 'lucide-react'
 import { Loader } from '@/components/loader'
 import { CharReveal } from '@/components/reveal'
 import { Magnetic } from '@/components/magnetic'
@@ -14,6 +14,12 @@ const HeroScene = dynamic(() => import('./scene'), { ssr: false })
 
 const ease = [0.22, 1, 0.36, 1] as const
 
+const floatingPills = [
+  { label: 'Machine Learning', icon: Binary, delay: 0 },
+  { label: 'Data Modeling & SQL', icon: Database, delay: 1.5 },
+  { label: 'Executive BI', icon: BarChart3, delay: 0.8 },
+]
+
 export function Hero() {
   const [loaded, setLoaded] = useState(false)
   const reduced = useReducedMotion()
@@ -21,9 +27,9 @@ export function Hero() {
   const onComplete = useCallback(() => setLoaded(true), [])
 
   const fade = (delay: number) => ({
-    initial: reduced ? false : { opacity: 0, y: 20 },
+    initial: reduced ? false : { opacity: 0, y: 16 },
     animate: loaded ? { opacity: 1, y: 0 } : undefined,
-    transition: { duration: 1, ease, delay },
+    transition: { duration: 0.65, ease, delay },
   })
 
   return (
@@ -42,7 +48,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-between px-6 pb-10 pt-28 md:px-10 md:pb-12">
         <motion.div
           className="flex items-start justify-between gap-6"
-          {...fade(0.9)}
+          {...fade(0.08)}
         >
           <div>
             <p className="font-display text-sm font-medium tracking-[0.08em] text-ivory md:text-base">
@@ -52,19 +58,55 @@ export function Hero() {
               {site.role}
             </p>
           </div>
-          <div className="hidden items-center gap-2 md:flex">
-            <span className="size-1.5 animate-pulse rounded-full bg-orange" />
-            <span className="eyebrow">Available for opportunities</span>
+          <div className="flex items-center gap-3">
+            <motion.div
+              className="flex items-center gap-2 border border-ivory/15 bg-obsidian/70 px-3 py-1.5 backdrop-blur-sm"
+              whileHover={{ scale: 1.04, borderColor: 'rgba(255,90,31,0.6)' }}
+              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            >
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange opacity-75" />
+                <span className="relative inline-flex size-2 rounded-full bg-orange" />
+              </span>
+              <span className="eyebrow text-[10px]">Open to Opportunities</span>
+            </motion.div>
           </div>
         </motion.div>
 
-        <div className="mt-16 md:mt-0">
+        <div className="mt-12 md:mt-0">
+          {/* Subtle floating feature pills */}
+          <motion.div
+            className="mb-6 hidden flex-wrap items-center gap-2.5 sm:flex"
+            {...fade(0.12)}
+          >
+            {floatingPills.map((pill, i) => {
+              const Icon = pill.icon
+              return (
+                <motion.div
+                  key={pill.label}
+                  animate={reduced ? {} : { y: [-2, 2, -2] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: pill.delay,
+                  }}
+                  whileHover={{ scale: 1.05, y: -4 }}
+                  className="flex items-center gap-2 border border-ivory/10 bg-obsidian/60 px-3 py-1 text-xs text-silver backdrop-blur-md transition-colors hover:border-orange/60 hover:text-ivory"
+                >
+                  <Icon className="size-3 text-orange" />
+                  <span className="font-display tracking-wider uppercase text-[10px]">{pill.label}</span>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+
           <h1 id="hero-heading" className="display text-[clamp(3.2rem,11.5vw,12.5rem)] text-ivory">
             <CharReveal
               text={'I TURN DATA\nINTO DECISIONS.'}
               active={loaded}
-              delay={0.25}
-              stagger={0.03}
+              delay={0.05}
+              stagger={0.016}
               highlight="DECISIONS."
             />
           </h1>
@@ -72,44 +114,50 @@ export function Hero() {
           <div className="mt-8 flex flex-col gap-8 md:mt-10 md:flex-row md:items-end md:justify-between">
             <motion.p
               className="max-w-md text-base leading-relaxed text-silver md:text-lg"
-              {...fade(1.1)}
+              {...fade(0.18)}
             >
               {site.tagline}
             </motion.p>
 
-            <motion.div className="flex flex-wrap items-center gap-4" {...fade(1.25)}>
+            <motion.div className="flex flex-wrap items-center gap-4" {...fade(0.24)}>
               <Magnetic>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                   onClick={() => scrollTo('#work')}
-                  className="group relative flex items-center gap-3 overflow-hidden bg-ivory px-6 py-4 font-display text-xs font-medium uppercase tracking-[0.2em] text-obsidian"
+                  className="group relative flex items-center gap-3 overflow-hidden bg-ivory px-6 py-4 font-display text-xs font-medium uppercase tracking-[0.2em] text-obsidian shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-shadow hover:shadow-[0_0_25px_rgba(255,90,31,0.4)]"
                 >
                   <span className="absolute inset-0 origin-left scale-x-0 bg-orange transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
-                  <span className="relative">Explore my work</span>
+                  <span className="relative font-semibold">Explore my work</span>
                   <ArrowDown className="relative size-3.5 transition-transform duration-500 group-hover:translate-y-0.5" />
-                </button>
+                </motion.button>
               </Magnetic>
               <Magnetic>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                   onClick={() => scrollTo('#contact')}
-                  className="group flex items-center gap-3 border border-ivory/20 px-6 py-4 font-display text-xs font-medium uppercase tracking-[0.2em] text-ivory transition-colors duration-500 hover:border-orange hover:text-orange"
+                  className="group flex items-center gap-3 border border-ivory/20 px-6 py-4 font-display text-xs font-medium uppercase tracking-[0.2em] text-ivory backdrop-blur-sm transition-all duration-500 hover:border-orange hover:bg-orange/10 hover:text-orange"
                 >
                   Let&apos;s connect
                   <ArrowUpRight className="size-3.5 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </button>
+                </motion.button>
               </Magnetic>
             </motion.div>
           </div>
         </div>
 
         <motion.div
-          className="mt-16 flex items-end justify-between md:mt-20"
-          {...fade(1.5)}
+          className="mt-14 flex items-end justify-between md:mt-18"
+          {...fade(0.32)}
         >
           <div className="flex items-center gap-4">
             <div className="relative h-14 w-px overflow-hidden bg-ivory/10">
               <span className="absolute inset-0 origin-top bg-orange animate-scroll-line" />
             </div>
-            <span className="eyebrow">Scroll</span>
+            <span className="eyebrow">Scroll to explore</span>
           </div>
           <p className="hidden font-display text-[11px] uppercase tracking-[0.2em] text-silver md:block">
             Data Science &middot; Analytics &middot; Intelligence

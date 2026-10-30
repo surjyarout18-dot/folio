@@ -50,12 +50,12 @@ export function Nav() {
     <>
       <motion.header
         className={cn(
-          'fixed inset-x-0 top-0 z-[120] transition-colors duration-500',
-          scrolled && !open && 'backdrop-blur-md'
+          'fixed inset-x-0 top-0 z-[120] transition-colors duration-300',
+          scrolled && !open && 'backdrop-blur-md bg-obsidian/60 border-b border-ivory/5'
         )}
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
       >
         <nav
           aria-label="Primary"
@@ -143,7 +143,7 @@ export function Nav() {
             initial={{ clipPath: 'inset(0 0 100% 0)' }}
             animate={{ clipPath: 'inset(0 0 0% 0)' }}
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
           >
             <div className="mx-auto flex h-full w-full max-w-[1600px] flex-col justify-end px-6 pb-10 pt-28 md:px-10 lg:flex-row lg:items-end lg:justify-between">
               <ul className="flex flex-col gap-1">
@@ -155,7 +155,7 @@ export function Nav() {
                       initial={{ y: '110%' }}
                       animate={{ y: 0 }}
                       exit={{ y: '110%' }}
-                      transition={{ duration: 0.8, delay: 0.15 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 0.45, delay: 0.08 + i * 0.04, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <span className="font-display text-xs text-orange">0{i + 1}</span>
                       <span className="display text-[clamp(3rem,9vw,8rem)] text-ivory transition-colors duration-300 group-hover:text-orange">
@@ -168,10 +168,10 @@ export function Nav() {
 
               <motion.div
                 className="mt-12 flex flex-col gap-6 lg:mt-0 lg:items-end"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
+                transition={{ duration: 0.4, delay: 0.25 }}
               >
                 <div className="flex flex-col gap-2 lg:items-end">
                   <span className="eyebrow">Socials</span>

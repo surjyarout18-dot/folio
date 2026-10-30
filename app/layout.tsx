@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import { SmoothScrollProvider } from '@/components/providers/smooth-scroll'
 import { Cursor } from '@/components/cursor'
+import { ScrollProgress } from '@/components/scroll-progress'
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/sections/footer'
 import { site } from '@/lib/data'
@@ -63,6 +64,7 @@ export default function RootLayout({
     <html lang="en" className={`${grotesk.variable} ${inter.variable}`}>
       <body className="grain antialiased">
         <SmoothScrollProvider>
+          <ScrollProgress />
           <Cursor />
           <Nav />
           {children}

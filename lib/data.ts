@@ -2,9 +2,9 @@ export const site = {
   name: 'Surjya Sarathi Rout',
   role: 'Data Scientist | Analytics Engineer',
   tagline: 'Exploring the intersection of data, technology, and intelligent solutions.',
-  email: 'surjya.rout@example.com',
-  linkedin: 'https://www.linkedin.com/in/surjya-sarathi-rout',
-  github: 'https://github.com/surjyarout',
+  email: 'surjyarout18@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/surjya-sarathi-rout-a5490327a/',
+  github: 'https://github.com/Surjya123',
   resume: '/resume.pdf',
   location: 'India',
 }
@@ -43,7 +43,7 @@ export const projects: Project[] = [
       'Unit configurations with compact carpet areas cleared fastest once price bands were normalized.',
       'A lead-to-site-visit funnel view exposed the single stage where most drop-off occurred.',
     ],
-    link: 'https://github.com/surjyarout',
+    link: 'https://github.com/Surjya123',
     year: 'Analytics',
   },
   {
@@ -64,7 +64,7 @@ export const projects: Project[] = [
       'Weekend transactions carried higher basket values but lower margins across most regions.',
       'Customer segments by income and household size responded very differently to promotions.',
     ],
-    link: 'https://github.com/surjyarout',
+    link: 'https://github.com/Surjya123',
     year: 'Business Intelligence',
   },
   {
@@ -85,7 +85,7 @@ export const projects: Project[] = [
       'Precipitation variability, not mean temperature, was the strongest discriminator of near-term risk.',
       'Index weighting sensitivity analysis showed rankings were stable for the top and bottom deciles.',
     ],
-    link: 'https://github.com/surjyarout',
+    link: 'https://github.com/Surjya123',
     year: 'Data Science',
   },
   {
@@ -106,7 +106,7 @@ export const projects: Project[] = [
       'Venue-adjusted par scores diverged from naive averages by double digits at several grounds.',
       'A handful of bowlers combined elite economy with wicket-taking across all three phases.',
     ],
-    link: 'https://github.com/surjyarout',
+    link: 'https://github.com/Surjya123',
     year: 'Sports Analytics',
   },
   {
@@ -127,7 +127,7 @@ export const projects: Project[] = [
       'Combining a slow EMA trend filter with RSI mean reversion outperformed either rule in isolation.',
       'Structured logging made it trivial to backtest rule changes against the recorded signal history.',
     ],
-    link: 'https://github.com/surjyarout',
+    link: 'https://github.com/Surjya123',
     year: 'Automation',
   },
   {
@@ -148,7 +148,7 @@ export const projects: Project[] = [
       'Sustained tilt drift was a more reliable early indicator than instantaneous vibration spikes.',
       'Edge-side filtering reduced transmitted data volume dramatically without losing alert fidelity.',
     ],
-    link: 'https://github.com/surjyarout',
+    link: 'https://github.com/Surjya123',
     year: 'IoT Systems',
   },
 ]

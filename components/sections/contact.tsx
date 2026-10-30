@@ -11,7 +11,7 @@ import { Magnetic } from '@/components/magnetic'
 const channels = [
   { label: 'Email', value: site.email, href: `mailto:${site.email}`, external: false },
   { label: 'LinkedIn', value: 'in/surjya-sarathi-rout', href: site.linkedin, external: true },
-  { label: 'GitHub', value: 'github.com/surjyarout', href: site.github, external: true },
+  { label: 'GitHub', value: 'github.com/Surjya123', href: site.github, external: true },
 ]
 
 export function Contact() {

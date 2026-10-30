@@ -74,6 +74,17 @@ export function Hero() {
         </motion.div>
 
         <div className="mt-12 md:mt-0">
+          {/* Welcome greeting badge */}
+          <motion.div
+            className="mb-4 inline-flex items-center gap-2 border border-orange/30 bg-orange/10 px-3.5 py-1 text-xs text-orange backdrop-blur-md"
+            {...fade(0.08)}
+          >
+            <Sparkles className="size-3 text-orange animate-pulse" />
+            <span className="font-display tracking-[0.18em] uppercase text-[11px] font-medium">
+              Welcome &bull; Surjya Sarathi Rout
+            </span>
+          </motion.div>
+
           {/* Subtle floating feature pills */}
           <motion.div
             className="mb-6 hidden flex-wrap items-center gap-2.5 sm:flex"

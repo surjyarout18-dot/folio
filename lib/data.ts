@@ -110,25 +110,25 @@ export const projects: Project[] = [
     year: 'Sports Analytics',
   },
   {
-    slug: 'gold-trading-bot',
+    slug: 'electronic-sales-analytics',
     index: '05',
-    title: 'Gold Trading Bot',
-    short: 'Python automation, MetaTrader 5, EMA, RSI and Telegram alerts.',
+    title: 'Electronic Sales Intelligence',
+    short: 'Retail sales analytics, customer segmentation, basket insights and revenue optimization in Python.',
     description:
-      'An automated XAU/USD signal engine connected to MetaTrader 5 that evaluates trend and momentum conditions and pushes real-time alerts to Telegram.',
-    tags: ['Python', 'MetaTrader 5', 'EMA / RSI', 'Automation', 'Telegram API'],
-    image: '/images/projects/gold.png',
+      'An exploratory data analysis and customer intelligence pipeline evaluating a full year of retail electronics transactions, purchasing behaviors, and add-on attach rates.',
+    tags: ['Python', 'EDA', 'Pandas', 'Seaborn', 'Retail Analytics'],
+    image: '/images/projects/electronics.png',
     problem:
-      'Manual chart-watching is slow and emotionally biased. Signal rules that look obvious in hindsight are inconsistently applied in live markets.',
+      'Retail electronics inventory and promotion decisions were made without visibility into product margin variances, customer demographic demand drivers, or add-on purchase correlations.',
     solution:
-      'Streamed OHLC candles from MT5, computed EMA crossovers and RSI thresholds on configurable timeframes, applied risk filters (spread, session, cooldown), and dispatched structured Telegram alerts with entry, stop and target levels along with a logged trade journal.',
+      'Analyzed 12 months of transaction logs; evaluated price elasticity, order status, and payment preferences; mapped demographic purchasing trends; and uncovered cross-selling opportunities for high-margin add-ons.',
     insights: [
-      'Filtering signals by trading session removed most false positives during low-liquidity hours.',
-      'Combining a slow EMA trend filter with RSI mean reversion outperformed either rule in isolation.',
-      'Structured logging made it trivial to backtest rule changes against the recorded signal history.',
+      'Loyalty members demonstrated a 28% higher average basket value, driven by multi-item bundle purchases.',
+      'Smartphones and laptops drove total volume, while accessories delivered the highest gross margin per transaction.',
+      'Analysis of payment methods revealed credit card orders had significantly higher order completion rates.',
     ],
-    link: 'https://github.com/Surjya123',
-    year: 'Automation',
+    link: 'https://github.com/Surjya123/ELECTRONIC-SALES',
+    year: 'Retail Analytics',
   },
   {
     slug: 'bridge-monitoring-system',

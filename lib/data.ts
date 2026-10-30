@@ -85,7 +85,7 @@ export const projects: Project[] = [
       'Precipitation variability, not mean temperature, was the strongest discriminator of near-term risk.',
       'Index weighting sensitivity analysis showed rankings were stable for the top and bottom deciles.',
     ],
-    link: 'https://github.com/Surjya123',
+    link: 'https://github.com/Surjya123/GLOBAL_CLIMATE_PYTHON',
     year: 'Data Science',
   },
   {

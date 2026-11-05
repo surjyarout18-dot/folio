@@ -150,6 +150,7 @@ export default function RootLayout({
           <Footer />
         </SmoothScrollProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <script src="/tracker.js" defer />
       </body>
     </html>
   )

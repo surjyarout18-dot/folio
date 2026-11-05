@@ -2,7 +2,10 @@ export const site = {
   name: 'Surjya Sarathi Rout',
   role: 'Data Scientist | Analytics Engineer',
   tagline: 'Exploring the intersection of data, technology, and intelligent solutions.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://surjya.vercel.app',
+  url:
+    typeof process !== 'undefined' && process.env?.NEXT_PUBLIC_SITE_URL
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : 'https://surjya.vercel.app',
   email: 'surjyarout18@gmail.com',
   linkedin: 'https://www.linkedin.com/in/surjya-sarathi-rout-a5490327a/',
   github: 'https://github.com/Surjya123',
@@ -11,9 +14,11 @@ export const site = {
 }
 
 export function getBaseUrl(): string {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+  if (typeof process !== 'undefined' && process.env) {
+    if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL
+    if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+  }
   return site.url
 }
 

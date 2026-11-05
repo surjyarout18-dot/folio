@@ -112,3 +112,4 @@
     sendEvent('pageview', { trigger: 'popstate' });
   });
 })();
+

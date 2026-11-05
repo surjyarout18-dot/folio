@@ -32,3 +32,4 @@ export function sanitizeLog(msg: string): string {
   if (!msg) return '';
   return msg.replace(/(bot[0-9]+:[a-zA-Z0-9_-]+)/gi, 'bot[REDACTED_TOKEN]');
 }
+

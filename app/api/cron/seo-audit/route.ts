@@ -24,3 +24,4 @@ export async function GET() {
     return NextResponse.json({ ok: false, error: err.message }, { status: 500 });
   }
 }
+

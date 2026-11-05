@@ -31,6 +31,9 @@ export const metadata: Metadata = {
     'Portfolio of Surjya Sarathi Rout, a data scientist and analytics engineer turning data into decisions with Python, SQL, Power BI and machine learning.',
   keywords: ['Data Scientist', 'Analytics Engineer', 'Python', 'SQL', 'Power BI', 'Portfolio'],
   authors: [{ name: site.name }],
+  verification: {
+    google: 'yGIGDt1zqZCrHh141PacDti81CvoHzyV7SCH3hNNvVU',
+  },
   openGraph: {
     title: `${site.name} — I turn data into decisions.`,
     description: site.tagline,

@@ -2,7 +2,7 @@ export const site = {
   name: 'Surjya Sarathi Rout',
   role: 'Data Scientist | Analytics Engineer',
   tagline: 'Exploring the intersection of data, technology, and intelligent solutions.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://surjyarout.vercel.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://surjya.vercel.app',
   email: 'surjyarout18@gmail.com',
   linkedin: 'https://www.linkedin.com/in/surjya-sarathi-rout-a5490327a/',
   github: 'https://github.com/Surjya123',
